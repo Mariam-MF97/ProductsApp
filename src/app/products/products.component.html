@@ -1,0 +1,14 @@
+<div class="container my-5">
+        <div class="products row ">
+            <div class="card col-sm-6 w-50 text-center" style="width: 500px;" *ngFor="let product of listOfProducts; let i = index" [routerLink]="['product-details', product.id]">
+                <img [src]= product.image  class="card-img-top w-50 h-50 mx-auto my-4 " alt="img">
+                <div class="card-body text-center align-self-center">
+                  <p class="card-text h4">{{ product.title }}</p>
+                  <button class="btn btn-danger mt-4"(click)=addToCart()>Add to cart</button>
+                </div>
+              </div>
+        </div>
+    </div>
+
+ 
+    

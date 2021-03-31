@@ -1,0 +1,48 @@
+<div class="container">
+    <form [formGroup]="loginForm" (ngSubmit)="loginSubmit()" class="mb-5 mt-5 border p-4 rounded">
+      <div class="form-group">
+        <label for="exampleInputEmail1">Email address</label>
+        <input type="email" class="form-control" id="exampleInputEmail1" formControlName = "email" >
+      </div>
+      <div class="alert alert-danger" *ngIf = "loginFormControl.email.touched && !loginFormControl.email.valid">
+        <div *ngIf = "loginFormControl.email.errors.required">Email is Required</div>
+        <div *ngIf = "loginFormControl.email.errors.pattern">Please enter a valid Email pattern</div>
+      </div>
+      <div class="form-group">
+        <label for="exampleInputUsername">Username</label>
+        <input type="text" class="form-control" id="exampleInputUsername" formControlName = "username">
+      </div>
+      <div class="alert alert-danger" *ngIf = "loginFormControl.username.touched && !loginFormControl.username.valid">
+        <div *ngIf = "loginFormControl.username.errors.required">Username is Required</div>
+        <div *ngIf = "loginFormControl.username.errors.pattern">Please enter a valid username pattern</div>
+    </div>
+    <div class="form-group">
+      <label>Password</label>
+      <div class="input-group">
+        <!-- Change input type to be able to accept dynamic data -->
+        <input
+          [type]="fieldTextType ? 'text' : 'password'"
+          class="form-control"
+          formControlName="password"
+        />
+        <div class="input-group-append">
+          <span class="input-group-text">
+            <i
+              class="fa"
+              [ngClass]="{
+                'fa-eye-slash': !fieldTextType,
+                'fa-eye': fieldTextType
+              }"
+              (click)="toggleFieldTextType()"
+            ></i>
+          </span>
+        </div>
+      </div>
+    </div>
+      <div class="alert alert-danger" *ngIf = "loginFormControl.password.touched && !loginFormControl.password.valid">
+        <div *ngIf = "loginFormControl.password.errors.required">Password is Required</div>
+        <div *ngIf = "loginFormControl.password.errors.minlength">Password can't be less than 8 letters</div>
+      </div>
+      <button type="submit" class="btn btn-success "[disabled]="!loginForm.valid">Submit</button>
+    </form>
+  </div>

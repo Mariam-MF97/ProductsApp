@@ -1,0 +1,26 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-warning">
+    <a class="navbar-brand font-weight-bold text-white mr-2" routerLink="products">ProductsApp</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item" [routerLinkActive] = '["active"]'>
+          <a class="nav-link mr-2 ml-2" routerLink="products">Products<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item" [routerLinkActive] = '["active"]'>
+          <a class="nav-link" routerLink="login">SignUp</a>
+        </li>
+        <li class="nav-item" [routerLinkActive] = '["active"]'>
+          <a class="nav-link text-success"><i class="fas fa-shopping-cart">{{count}}</i></a>
+        </li>
+      </ul>
+      <div class="d-inline-block ml-auto" ngbDropdown #myDrop="ngbDropdown">
+        <button id="dropdownManual" ngbDropdownToggle><img [src]="myImg" class="rounded-circle w-25"></button>
+        <div ngbDropdownMenu aria-labelledby="dropdownManual">
+          <button ngbDropdownItem>View Profile</button>
+          <button ngbDropdownItem>Edit Profile</button>
+        </div>
+      </div>
+    </div>
+  </nav>
